@@ -3,14 +3,6 @@ import { Ob3gvView, VIEW_TYPE_OB3GV } from "./view";
 
 // Remember to rename these classes and interfaces!
 
-interface MyPluginSettings {
-	mySetting: string;
-}
-
-const DEFAULT_SETTINGS: MyPluginSettings = {
-	mySetting: 'default'
-}
-
 export default class Ob3dgvPlugin extends Plugin {
 	async onload() {
 	  this.registerView(
@@ -18,7 +10,7 @@ export default class Ob3dgvPlugin extends Plugin {
 		(leaf) => new Ob3gvView(leaf)
 	  );
   
-	  this.addRibbonIcon("dice", "Activate view", () => {
+	  this.addRibbonIcon("dice-glyph", "Open 3D Graph View", () => {
 		this.activateView();
 	  });
 	}
