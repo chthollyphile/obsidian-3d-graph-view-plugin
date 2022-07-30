@@ -6,8 +6,11 @@ export function Dgraph7c94cd() {
   const files = app.vault.getMarkdownFiles()
   const map = new Map()
   for (let i = 0; i < files.length; i++) {
+    const source = files[i].basename
+    map.set(source,"i")
+  } 
+  for (let i = 0; i < files.length; i++) {
   const source = files[i].basename
-  map.set(source)
   graph.nodes.push({"id": source,"group": 1})
   const caches = this.app.metadataCache.getCache(files[i].path)
   if (("links" in caches)) {

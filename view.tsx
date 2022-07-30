@@ -22,6 +22,7 @@ export class Ob3gvView extends ItemView {
 
 async onOpen() {
     const graphJson = Dgraph7c94cd()
+    // console.log(graphJson) //debug
     const root = createRoot(this.containerEl.children[1])
     root.render(      
         <ForceGraph3D

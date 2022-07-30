@@ -16,6 +16,6 @@ I may not have time to finish this project. Feel free to fork or clone this repo
 
 # Install
 
-- download `obsidian-3d-graph-view-plugin.zip` from [releases](https://github.com/chthollyphile/obsidian-3d-graph-view-plugin/releases/tag/0.0.1).
+- download `obsidian-3d-graph-view-plugin.zip` from [releases](https://github.com/chthollyphile/obsidian-3d-graph-view-plugin/releases/).
 - unzip the file to `your-obsidian-vault/.obsidian/plugins`
 - open Obsidian, toggle `Obsidian-3d-graph-view-plugin` from `Settings -- Third-party plugins`
