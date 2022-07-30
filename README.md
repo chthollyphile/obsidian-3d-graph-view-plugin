@@ -1,6 +1,6 @@
 # Obsidian-3d-graph-view-plugin
-
 Bringing 3D graph view to Obsidian using [react-force-graph](https://github.com/vasturiano/react-force-graph).
+![asf32rq23r2q544213r.png](https://s2.loli.net/2022/07/30/a8o9QbqkNH7plvj.png)
 
 # Warning
 
