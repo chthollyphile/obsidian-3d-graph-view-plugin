@@ -22,6 +22,8 @@ jobs:
       - name: Build
         id: build
         run: |
+          rm package-lock.json
+          npm cache clean --force
           npm install
           npm run build
           mkdir ${{ env.PLUGIN_NAME }}
