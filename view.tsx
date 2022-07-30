@@ -5,6 +5,7 @@ import { Dgraph7c94cd } from "./ReactView";
 import { createRoot } from "react-dom/client";
 import ForceGraph3D from 'react-force-graph-3d';
 import SpriteText from 'three-spritetext';
+import { clear } from "console";
 export const VIEW_TYPE_OB3GV = "Obsidian-3D-Graph-Viewer";
 
 export class Ob3gvView extends ItemView {
@@ -38,11 +39,13 @@ async onOpen() {
         return sprite;
         }}
     />
-    )}
+    )
+  }
 
   async onClose() {
-    const container = this.containerEl.children[1];
-    ReactDOM.unmountComponentAtNode(container);
+    const root = createRoot(this.containerEl.children[1])
+    root.render(null)
+    // ReactDOM.unmountComponentAtNode(this.containerEl.children[1]);
   }
   
 }
