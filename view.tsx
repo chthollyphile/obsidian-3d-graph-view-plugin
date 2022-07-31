@@ -1,4 +1,4 @@
-import { ItemView, WorkspaceLeaf } from "obsidian";
+import { ItemView, TAbstractFile, TFile, WorkspaceLeaf } from "obsidian";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Dgraph7c94cd } from "./ReactView";
@@ -26,8 +26,15 @@ async onOpen() {
       const FocusGraph = () => {
         const fgRef = useRef();
         const handleClick = useCallback(node => {
-          // console.log(app.vault.)
+          // Open markdown file when click
+
+          const nodePath = node.path
+          const dgNodefile: TFile = app.vault.getAbstractFileByPath(nodePath)
+          console.log(dgNodefile)
+          app.workspace.getLeaf().openFile(dgNodefile);
+
           // Aim at node from outside it
+
           const distance = 200;
           const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
           fgRef.current.cameraPosition(

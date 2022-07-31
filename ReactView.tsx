@@ -11,8 +11,9 @@ export function Dgraph7c94cd() {
   } 
   for (let i = 0; i < files.length; i++) {
   const source = files[i].basename
-  graph.nodes.push({"id": source,"group": 1})
-  const caches = this.app.metadataCache.getCache(files[i].path)
+  const path = files[i].path
+  graph.nodes.push({"id": source,"group": 1,"path": path})
+  const caches = this.app.metadataCache.getCache(path)
   if (("links" in caches)) {
       const link = caches.links
       const embed = caches.embeds
