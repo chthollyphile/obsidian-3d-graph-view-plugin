@@ -22,10 +22,8 @@ export class Ob3gvView extends ItemView {
 
 async onOpen() {
     const graphJson = Dgraph7c94cd()
-    // console.log(graphJson) //debug
     const root = createRoot(this.containerEl.children[1])
-    const GROUPS = 12;
-    root.render(      
+    root.render(
         <ForceGraph3D
         graphData={graphJson}
         nodeColor={() => '#b6bfc1db'}
@@ -43,14 +41,12 @@ async onOpen() {
         sprite.textHeight = 4;
         return sprite;
         }}
+        // onNodeClick={handleClick}
     />
     )
   }
 
   async onClose() {
-    const root = createRoot(this.containerEl.children[1])
-    root.render(null)
-    // ReactDOM.unmountComponentAtNode(this.containerEl.children[1]);
-  }
-  
+    ReactDOM.unmountComponentAtNode(this.containerEl);
+  } 
 }
