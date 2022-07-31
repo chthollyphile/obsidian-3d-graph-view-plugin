@@ -27,12 +27,12 @@ async onOpen() {
         const fgRef = useRef();
         const handleClick = useCallback(node => {
           // Aim at node from outside it
-          const distance = 40;
+          const distance = 200;
           const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
           fgRef.current.cameraPosition(
             { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }, // new position
             node, // lookAt ({ x, y, z })
-            3000  // ms transition duration
+            1500  // ms transition duration
           );
         }, [fgRef]);
 
