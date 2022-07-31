@@ -26,6 +26,7 @@ async onOpen() {
       const FocusGraph = () => {
         const fgRef = useRef();
         const handleClick = useCallback(node => {
+          // console.log(app.vault.)
           // Aim at node from outside it
           const distance = 200;
           const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
@@ -49,7 +50,6 @@ async onOpen() {
           linkCurveRotation={4}
           linkDirectionalArrowColor={"#ffffff"}
           linkDirectionalArrowLength={4}
-          onNodeClick={handleClick}
 
           backgroundColor={'#202020'}
           nodeThreeObjectExtend={true}
@@ -59,6 +59,8 @@ async onOpen() {
             sprite.textHeight = 4;
             return sprite;
             }}
+
+          onNodeClick={handleClick}
         />;
       };
     const root = createRoot(this.containerEl.children[1])
