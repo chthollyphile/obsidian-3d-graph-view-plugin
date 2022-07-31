@@ -21,29 +21,53 @@ export class Ob3gvView extends ItemView {
   }
 
 async onOpen() {
+    const { useRef, useCallback } = React;
     const graphJson = Dgraph7c94cd()
+      const FocusGraph = () => {
+        const fgRef = useRef();
+        const handleClick = useCallback(node => {
+          // Aim at node from outside it
+          const distance = 40;
+          const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
+          fgRef.current.cameraPosition(
+            { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }, // new position
+            node, // lookAt ({ x, y, z })
+            3000  // ms transition duration
+          );
+        }, [fgRef]);
+
+        return <ForceGraph3D
+          ref={fgRef}
+          graphData={graphJson}
+          nodeLabel="id"
+          nodeColor={() => '#b6bfc1db'}
+          nodeResolution={8}
+          nodeAutoColorBy="group"
+
+          linkColor={() => "#f5f5f5"}
+          linkCurvature={0.8}
+          linkCurveRotation={4}
+          linkDirectionalArrowColor={"#ffffff"}
+          linkDirectionalArrowLength={4}
+          onNodeClick={handleClick}
+
+          backgroundColor={'#202020'}
+          nodeThreeObjectExtend={true}
+          nodeThreeObject={node => {
+            const sprite = new SpriteText(node.id);
+            sprite.color = 'lightgrey';
+            sprite.textHeight = 4;
+            return sprite;
+            }}
+        />;
+      };
     const root = createRoot(this.containerEl.children[1])
-    root.render(
-        <ForceGraph3D
-        graphData={graphJson}
-        nodeColor={() => '#b6bfc1db'}
-        nodeResolution={8}
-        linkColor={() => "#f5f5f5"}
-        linkCurvature={0.8}
-        linkCurveRotation={4}
-        linkDirectionalArrowColor={"#ffffff"}
-        linkDirectionalArrowLength={4}
-        backgroundColor={'#202020'}
-        nodeThreeObjectExtend={true}
-        nodeThreeObject={node => {
-        const sprite = new SpriteText(node.id);
-        sprite.color = 'lightgrey';
-        sprite.textHeight = 4;
-        return sprite;
-        }}
-        // onNodeClick={handleClick}
-    />
-    )
+    root.render( 
+        <FocusGraph />
+      );
+
+
+
   }
 
   async onClose() {
