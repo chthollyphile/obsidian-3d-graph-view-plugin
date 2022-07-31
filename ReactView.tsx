@@ -7,7 +7,7 @@ export function Dgraph7c94cd() {
   const map = new Map()
   for (let i = 0; i < files.length; i++) {
     const source = files[i].basename
-    map.set(source,"i")
+    map.set(source,"1")
   } 
   for (let i = 0; i < files.length; i++) {
   const source = files[i].basename
