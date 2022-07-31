@@ -45,4 +45,3 @@ export function Dgraph7c94cd() {
   }
     return graph
 }
-

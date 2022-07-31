@@ -6,3 +6,8 @@ body {
 .d-graph-7c94cd {
     color: aqua;
 }
+
+.scene-tooltip {
+    color: #ffffff !important;
+    background-color: #20202070 !important;
+  }
