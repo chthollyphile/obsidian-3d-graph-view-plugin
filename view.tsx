@@ -65,9 +65,6 @@ async onOpen() {
     root.render( 
         <FocusGraph />
       );
-
-
-
   }
 
   async onClose() {
