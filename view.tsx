@@ -30,7 +30,6 @@ async onOpen() {
 
           const nodePath = node.path
           const dgNodefile: TFile = app.vault.getAbstractFileByPath(nodePath)
-          console.log(dgNodefile)
           app.workspace.getLeaf().openFile(dgNodefile);
 
           // Aim at node from outside it
