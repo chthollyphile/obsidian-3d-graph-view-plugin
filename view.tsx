@@ -5,6 +5,8 @@ import { Dgraph7c94cd } from "./ReactView";
 import { createRoot } from "react-dom/client";
 import ForceGraph3D from 'react-force-graph-3d';
 import SpriteText from 'three-spritetext';
+import { node } from "prop-types";
+import { promises } from "stream";
 export const VIEW_TYPE_OB3GV = "Obsidian-3D-Graph-Viewer";
 
 export class Ob3gvView extends ItemView {
@@ -22,10 +24,9 @@ export class Ob3gvView extends ItemView {
 
 async onOpen() {
     const graphJson = Dgraph7c94cd()
-    // console.log(graphJson) //debug
     const root = createRoot(this.containerEl.children[1])
-    const GROUPS = 12;
-    root.render(      
+    root.render(
+    // ReactDOM.render(  //react 17
         <ForceGraph3D
         graphData={graphJson}
         nodeColor={() => '#b6bfc1db'}
@@ -43,14 +44,13 @@ async onOpen() {
         sprite.textHeight = 4;
         return sprite;
         }}
-    />
+        // onNodeClick={handleClick}
+    />,
+    // this.containerEl.children[1]
     )
   }
 
   async onClose() {
-    const root = createRoot(this.containerEl.children[1])
-    root.render(null)
-    // ReactDOM.unmountComponentAtNode(this.containerEl.children[1]);
-  }
-  
+    ReactDOM.unmountComponentAtNode(this.containerEl);
+  } 
 }
