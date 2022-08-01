@@ -6,7 +6,7 @@ import ForceGraph3D from 'react-force-graph-3d';
 import SpriteText from 'three-spritetext';
 import { Dgraph7c94cd } from "ReactView"
 export const VIEW_TYPE_OB3GV = "Obsidian-3D-Graph-Viewer";
-
+import { useWindowSize } from '@react-hook/window-size';
 export class Ob3gvView extends ItemView {
   constructor(leaf: WorkspaceLeaf) {
     super(leaf);
@@ -24,6 +24,7 @@ async onOpen() {
       const { useRef, useCallback } = React;
       const graphJson = Dgraph7c94cd()
       const FocusGraph = () => {
+        const [width, height] = useWindowSize();
         const fgRef = useRef();
         const handleClick = useCallback(node => {
           // Open markdown file when click
@@ -42,6 +43,8 @@ async onOpen() {
         }, [fgRef]);
 
         return <ForceGraph3D
+          width={width}
+          height={height}
           ref={fgRef}
           graphData={graphJson}
           nodeLabel="id"
