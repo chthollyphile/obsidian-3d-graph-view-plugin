@@ -4,6 +4,7 @@ import * as ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
 import ForceGraph3D from 'react-force-graph-3d';
 import SpriteText from 'three-spritetext';
+import * as THREE from 'three';
 import { Dgraph7c94cd } from "ReactView"
 export const VIEW_TYPE_OB3GV = "Obsidian-3D-Graph-Viewer";
 import { useWindowSize } from '@react-hook/window-size';
@@ -21,9 +22,19 @@ export class Ob3gvView extends ItemView {
   }
 
 async onOpen() {
-      const { useRef, useCallback } = React;
-      const graphJson = Dgraph7c94cd()
+      const { useRef, useCallback, useState, useEffect } = React;
       const FocusGraph = () => {
+        const [graphJson, setData] = useState(Dgraph7c94cd());
+        useEffect(() => {
+          // refresh graphJson when metadataCache changed
+          this.registerEvent(this.app.metadataCache.on('changed', () => {
+            const graphJson = Dgraph7c94cd();
+              setData(() => {
+                return graphJson
+              });
+          }))
+        }, []);
+
         const [width, height] = useWindowSize();
         const fgRef = useRef();
         const handleClick = useCallback(node => {
@@ -33,7 +44,7 @@ async onOpen() {
           app.workspace.getLeaf().openFile(dgNodefile);
           // Auto-focus center node
           // credit to vasturiano/react-force-graph/example/camera-auto-orbit
-          const distance = 200;
+          const distance = 120;
           const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
           fgRef.current.cameraPosition(
             { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio },
