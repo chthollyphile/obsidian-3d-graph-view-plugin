@@ -4,7 +4,6 @@ import * as ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
 import ForceGraph3D from 'react-force-graph-3d';
 import SpriteText from 'three-spritetext';
-import * as THREE from 'three';
 import { Dgraph7c94cd } from "ReactView"
 export const VIEW_TYPE_OB3GV = "Obsidian-3D-Graph-Viewer";
 import { useWindowSize } from '@react-hook/window-size';
