@@ -1,7 +1,7 @@
 {
 	"id": "Obsidian-3d-graph-view-plugin",
 	"name": "Obsidian 3d Graph View Plugin",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"minAppVersion": "0.12.0",
 	"description": "Bringing 3D graph view to Obsidian.",
 	"author": "chthollyphile",
