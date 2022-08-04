@@ -47,7 +47,7 @@ export class Ob3gvView extends ItemView {
         app.workspace.getLeaf().openFile(dgNodefile);
         // Auto-focus center node
         // credit to vasturiano/react-force-graph/example/camera-auto-orbit
-        const distance = 120;
+        const distance = 200;
         const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
         fgRef.current.cameraPosition(
           { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio },
@@ -68,7 +68,7 @@ export class Ob3gvView extends ItemView {
             currentNode = node
           }
         }
-        const distance = 120;
+        const distance = 200;
         const distRatio = 1 + distance / Math.hypot(currentNode.x, currentNode.y, currentNode.z);
         fgRef.current.cameraPosition(
           { x: currentNode.x * distRatio, y: currentNode.y * distRatio, z: currentNode.z * distRatio },
