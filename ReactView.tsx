@@ -4,11 +4,7 @@ export function Dgraph7c94cd() {
     "links":[]
   }
   const files = app.vault.getMarkdownFiles()
-  const map = new Map()
-  for (let i = 0; i < files.length; i++) {
-    const source = files[i].basename
-    map.set(source,"1")
-  } 
+  const map = maping() 
   for (let i = 0; i < files.length; i++) {
   const source = files[i].basename
   const path = files[i].path
@@ -44,5 +40,15 @@ export function Dgraph7c94cd() {
       }   
   }
   }
+  // console.log(graph)
     return graph
+
+  function maping() {
+    const map = new Map()
+    for (let i = 0; i < files.length; i++) {
+      const source = files[i].basename
+      map.set(source, "i")
+    }
+    return map
+  }
 }
