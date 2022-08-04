@@ -30,3 +30,4 @@ export default class Ob3dgvPlugin extends Plugin {
 	  );
 	}
   }
+

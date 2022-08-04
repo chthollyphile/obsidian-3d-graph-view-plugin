@@ -78,8 +78,6 @@ export class Ob3gvView extends ItemView {
     }));
     }, []);
 
-    //////////////////////////////// getActiveFile ////////////////////////////////
-
     return <ForceGraph3D
       width={width}
       height={height}
@@ -103,6 +101,9 @@ export class Ob3gvView extends ItemView {
         sprite.textHeight = 4;
         return sprite;
       }}
+      
+      warmupTicks={100}
+      cooldownTicks={0}
 
       onNodeClick={handleClick}
     />;
