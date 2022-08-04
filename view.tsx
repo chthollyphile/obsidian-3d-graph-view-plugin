@@ -32,7 +32,7 @@ export class Ob3gvView extends ItemView {
           const refresh = Dgraph7c94cd()
           // console.log('🐟 metadataCache changed!');
           setData(() => {
-            const graphJson = refresh
+            let graphJson = refresh
             return graphJson
           });
         }))
@@ -72,9 +72,9 @@ export class Ob3gvView extends ItemView {
         const distRatio = 1 + distance / Math.hypot(currentNode.x, currentNode.y, currentNode.z);
         fgRef.current.cameraPosition(
           { x: currentNode.x * distRatio, y: currentNode.y * distRatio, z: currentNode.z * distRatio },
-          currentNode, // lookAt ({ x, y, z })
-          1500  // ms transition duration
-        );;
+          currentNode, 
+          1500
+        );
     }));
     }, []);
 
@@ -102,8 +102,8 @@ export class Ob3gvView extends ItemView {
         return sprite;
       }}
       
-      warmupTicks={100}
-      cooldownTicks={0}
+      // warmupTicks={200}
+      // cooldownTicks={1000}
 
       onNodeClick={handleClick}
     />;
